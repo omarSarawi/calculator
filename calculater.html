@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="calculator.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="calculator">
+      <input type="text" id="screen" maxlength="20" />
+      <div class="calc-buttons">
+        <div class="functions-two">
+          <button class="button complex-stuff" onclick="factorial()">
+            x !
+          </button>
+          <button class="button complex-stuff" onclick="exponent()">x^</button>
+          <button class="button complex-stuff" onclick="Square()">x²</button>
+          <button class="button triggers" onclick="backspace()">CE</button>
+
+          <button class="button complex-stuff" onclick="exponentTen()">
+            10<sup>x</sup>
+          </button>
+          <button class="button complex-stuff" onclick=" LN()">ln</button>
+          <button class="button complex-stuff" onclick="log()">log</button>
+          <button class="button basic-stuff" onclick="divide()">÷</button>
+
+          <button class="button complex-stuff" onclick="sin()">sin</button>
+          <button class="button complex-stuff" onclick="cos()">cos</button>
+          <button class="button complex-stuff" onclick="tan()">tan</button>
+          <button class="button basic-stuff" onclick="multiply()">×</button>
+
+          <button class="button complex-stuff" onclick="pi()">π</button>
+          <button class="button complex-stuff" onclick="squareRoot()">√</button>
+          <button class="button complex-stuff" onclick=" exp()">e</button>
+          <button class="button basic-stuff" onclick="plus()">+</button>
+
+          <button class="button complex-stuff" onclick="degrees()">∘</button>
+          <button class="button complex-stuff" onclick="radians()">rad</button>
+          <button class="button complex-stuff" onclick="percent()">%</button>
+          <button class="button basic-stuff" onclick="plusMinus()">-</button>
+        </div>
+        <div class="functions-one">
+          <button class="button basic-stuff" onclick="opean()">(</button>
+          <button class="button basic-stuff" onclick="Close()">)</button>
+          <button class="button triggers" onclick="Clear()">AC</button>
+          <button class="button numbers" onclick="seven()">7</button>
+          <button class="button numbers" onclick="eight()">8</button>
+          <button class="button numbers" onclick="nine()">9</button>
+          <button class="button numbers" onclick="four()">4</button>
+          <button class="button numbers" onclick="five()">5</button>
+          <button class="button numbers" onclick="six()">6</button>
+          <button class="button numbers" onclick="one()">1</button>
+          <button class="button numbers" onclick="two()">2</button>
+          <button class="button numbers" onclick="three()">3</button>
+          <button class="button triggers" onclick="Equal()">=</button>
+          <button class="button numbers" onclick="zero()">0</button>
+          <button class="button basic-stuff" onclick="Dot()">.</button>
+        </div>
+      </div>
+      <script>
+        const display = document.getElementById("screen");
+
+        let currentValue = "";
+        function zero() {
+          currentValue += "0";
+          display.value = currentValue;
+        }
+        function one() {
+          currentValue += "1";
+          display.value = currentValue;
+        }
+        function two() {
+          currentValue += "2";
+          display.value = currentValue;
+        }
+        function three() {
+          currentValue += "3";
+          display.value = currentValue;
+        }
+        function four() {
+          currentValue += "4";
+          display.value = currentValue;
+        }
+        function five() {
+          currentValue += "5";
+          display.value = currentValue;
+        }
+        function six() {
+          currentValue += "6";
+          display.value = currentValue;
+        }
+        function seven() {
+          currentValue += "7";
+          display.value = currentValue;
+        }
+        function eight() {
+          currentValue += "8";
+          display.value = currentValue;
+        }
+        function nine() {
+          currentValue += "9";
+          display.value = currentValue;
+        }
+        function Dot() {
+          currentValue += ".";
+          display.value = currentValue;
+        }
+        function opean() {
+          currentValue += "(";
+          display.value = currentValue;
+        }
+        function Close() {
+          currentValue += ")";
+          display.value = currentValue;
+        }
+        function plus() {
+          currentValue += "+";
+          display.value = currentValue;
+        }
+
+        function Equal() {
+          const convertedValue = currentValue
+            .replace("×", "*")
+            .replace("÷", "/")
+            .replace("%", "*0.01")
+            .replace("^", "**")
+            .replace("sin", "Math.sin")
+            .replace("cos", "Math.cos")
+            .replace("Ln", "Math.log")
+            .replace("π", "Math.PI")
+            .replace("log", "Math.log10")
+            .replace("e", "Math.E")
+            .replace("tan", "Math.tan")
+            .replace("√", "Math.sqrt");
+          try {
+            display.value = eval(convertedValue);
+          } catch (SyntaxError) {
+            display.value ="Syntax Error";
+          }
+        }
+        function Clear() {
+          currentValue = "";
+          display.value = currentValue;
+        }
+        function backspace() {
+          currentValue = currentValue.substring(0, display.value.length - 1);
+          display.value = currentValue;
+        }
+        function multiply() {
+          currentValue += "×";
+          display.value = currentValue;
+        }
+
+        function divide() {
+          currentValue += "÷";
+          display.value = currentValue;
+        }
+
+        function plusMinus() {
+          currentValue += "-";
+          display.value = currentValue;
+        }
+        function factorialx(x) {
+          var number = "1";
+          if (x === 0) {
+            return "1";
+          } else if (x < 0) {
+            return "undefined";
+          } else {
+            var number = "1";
+            for (var i = x; i > 0; i--) {
+              number *= i;
+            }
+            return number;
+          }
+        }
+        function factorial() {
+          currentValue += "factorialx(";
+          display.value = currentValue;
+        }
+        function pi() {
+          currentValue += "π";
+          display.value = currentValue;
+        }
+        function Square() {
+          currentValue += "^2";
+          display.value = currentValue;
+        }
+        function squareRoot() {
+          currentValue += "√(";
+          display.value = currentValue;
+        }
+        function percent() {
+          currentValue += "%";
+          display.value = currentValue;
+        }
+
+        function sin() {
+          currentValue += "sin(";
+          display.value = currentValue;
+        }
+        function cos() {
+          currentValue += "cos(";
+          display.value = currentValue;
+        }
+        function tan() {
+          currentValue += "tan(";
+          display.value = currentValue;
+        }
+        function log() {
+          currentValue += "log(";
+          display.value = currentValue;
+        }
+        function LN() {
+          currentValue += "Ln(";
+          display.value = currentValue;
+        }
+        function exponent() {
+          currentValue += "^";
+          display.value = currentValue;
+        }
+        function exp() {
+          currentValue += "e";
+          display.value = currentValue;
+        }
+        function exponentTen() {
+          currentValue += "10^";
+          display.value = currentValue;
+        }
+        function radians() {
+          display.value = display.value * (Math.PI / 180);
+        }
+        function degrees() {
+          display.value = display.value * (180 / Math.PI);
+        }
+      </script>
+    </div>
+  </body>
+</html>
